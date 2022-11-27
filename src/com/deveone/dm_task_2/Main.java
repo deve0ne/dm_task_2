@@ -14,6 +14,11 @@ public class Main {
     public static void main(String[] args) {
         int[] numbers = readArrFromFile("input.txt");
 
+        if (numbers.length == 0) {
+            System.err.println("Number array is empty");
+            return;
+        }
+
         quickSort(numbers);
 
         writeAnswerToFile("output.txt", numbers, comparisons);
