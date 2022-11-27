@@ -29,10 +29,6 @@ public class Main {
         quickSort(numbers, 0, numbers.length - 1);
     }
 
-    /* Тут считаются не все сравнения, проводимые сортировкой.
-    Как я понимаю, должны считаться именно прямые сравнения чисел массива,
-    поэтмоу только их и считаем, а сравнения индексов игнорируем.
-    Но на всякий случай оставил закомментированные счётчики остальных сравнений. */
     private static void quickSort(int[] numbers, int leftBorder, int rightBorder) {
         int leftMarker = leftBorder;
         int rightMarker = rightBorder;
@@ -49,9 +45,7 @@ public class Main {
                 comparisons++;
             }
 
-//            comparisons++;
             if (leftMarker <= rightMarker) {
-//                comparisons++;
                 if (leftMarker < rightMarker) {
                     int tmp = numbers[leftMarker];
                     numbers[leftMarker] = numbers[rightMarker];
@@ -62,18 +56,13 @@ public class Main {
                 rightMarker--;
             }
 
-//            comparisons++;
         } while (leftMarker <= rightMarker);
 
-        if (leftMarker < rightBorder) {
-//            comparisons++;
+        if (leftMarker < rightBorder)
             quickSort(numbers, leftMarker, rightBorder);
-        }
 
-        if (leftBorder < rightMarker) {
-//            comparisons++;
+        if (leftBorder < rightMarker)
             quickSort(numbers, leftBorder, rightMarker);
-        }
     }
 
     private static int[] readArrFromFile(String filepath) {
@@ -92,7 +81,6 @@ public class Main {
 
             scanner.close();
         } catch (IOException e) {
-            System.err.println("Error on reading from file :(");
             e.printStackTrace();
             return new int[0];
         }
@@ -106,7 +94,6 @@ public class Main {
         try {
             file.createNewFile();
         } catch (IOException e) {
-            System.err.println("Error on creating file :(");
             e.printStackTrace();
             return;
         }
@@ -125,7 +112,6 @@ public class Main {
 
             writer.close();
         } catch (IOException e) {
-            System.err.println("Error on writing to file :(");
             e.printStackTrace();
         }
     }
